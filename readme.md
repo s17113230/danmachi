@@ -24,9 +24,9 @@
 
 ### 2.然後到"重來"的畫面
 
-![](https://github.com/Zhen-Bo/Cloudia/blob/master/example_image/example.jpg)
+![](https://github.com/s17113230/danmachi/blob/master/example_image/example.jpg)
 
-是以"![](https://github.com/Zhen-Bo/Cloudia/blob/master/example_image/again.jpg)"為判斷基準
+是以"![](https://github.com/s17113230/danmachi/blob/master/example_image/again.jpg)"為判斷基準
 
 |-----------------------------|
 
