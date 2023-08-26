@@ -1,16 +1,16 @@
 import sys
 import traceback
 import os
-__author__ = "Paver(Zhen_Bo)"
+__author__ = "LeeChing"
 
 # ============================================================================
 # 原始解析度 1920x1080
 # ============================================================================
 
 print(
-    "\033[31mScrpit made by\033[0m \033[41;37mPaver\033[0m,github:\033[37;34mhttps://github.com/Zhen-Bo\033[0m")
+    "\033[31mScrpit made by\033[0m \033[41;37mLeeChing\033[0m,github:\033[37;34mhttps://github.com/s17113230\033[0m")
 print(
-    "\033[31m此腳本作者為\033[0m \033[41;37mPaver\033[0m,github頁面:\033[37;34mhttps://github.com/Zhen-Bo\033[0m")
+    "\033[31m此腳本作者為\033[0m \033[41;37mLeeChing\033[0m,github頁面:\033[37;34mhttps://github.com/s17113230\033[0m")
 print(
     "請問是否為NOX模擬器\n是的話請輸入\033[1;36m\"1\"\033[0m\n不是的話請按\033[1;31mEnter\033[0m")
 NOX = input("模式:")

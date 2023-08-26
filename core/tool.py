@@ -55,7 +55,7 @@ class adbKit():
         return image
 
     def reimage(self, images):
-        images = cv2.resize(images, (1080, 1920))
+        images = cv2.resize(images, (960, 540))
         return images
 
     def click(self, pointx, pointy, raw=False):
@@ -90,20 +90,22 @@ class tool():
 
     def get_width_muti(self):
         sample = self.adbkit.screenshots(raw=True)
-        return sample.shape[0] / 1920
+        return sample.shape[0] / 540
 
     def get_ark(self, path):
         arks = []
         for img in os.listdir(path):
             arks.append(img)
         arks.remove("again.jpg")
+        arks.remove("againCheck.jpg")
+        arks.remove("skip.jpg")
         choose = []
         while True:
             os.system('cls')
             print(
-                "\033[31mScrpit made by\033[0m \033[41;37mPaver\033[0m,github:\033[37;34mhttps://github.com/Zhen-Bo\033[0m")
+                "\033[31mScrpit made by\033[0m \033[41;37mPaver\033[0m,github:\033[37;34mhttps://github.com/s17113230\033[0m")
             print(
-                "\033[31m此腳本作者為\033[0m \033[41;37mPaver\033[0m,github頁面:\033[37;34mhttps://github.com/Zhen-Bo\033[0m")
+                "\033[31m此腳本作者為\033[0m \033[41;37mPaver\033[0m,github頁面:\033[37;34mhttps://github.com/s17113230\033[0m")
             i = 1
             print("目前候選名單: ", end='')
             for ark in arks:
@@ -115,7 +117,8 @@ class tool():
                 print("{0}.{1}    ".format(j, ark.split('.')[0]), end='')
                 j += 1
             print("\n輸入a為全部添加,輸入e離開")
-            index = input("請輸入要鎖定的聖物編號: ")
+            # index = input("請輸入要鎖定的UR編號: ")
+            index = 'a'
             try:
                 index = int(index)
                 if index > len(arks):
@@ -132,9 +135,9 @@ class tool():
                 elif index.lower() == 'e':
                     os.system('cls')
                     print(
-                        "\033[31mScrpit made by\033[0m \033[41;37mPaver\033[0m,github:\033[37;34mhttps://github.com/Zhen-Bo\033[0m")
+                        "\033[31mScrpit made by\033[0m \033[41;37mPaver\033[0m,github:\033[37;34mhttps://github.com/s17113230\033[0m")
                     print(
-                        "\033[31m此腳本作者為\033[0m \033[41;37mPaver\033[0m,github頁面:\033[37;34mhttps://github.com/Zhen-Bo\033[0m")
+                        "\033[31m此腳本作者為\033[0m \033[41;37mPaver\033[0m,github頁面:\033[37;34mhttps://github.com/s17113230\033[0m")
                     print("\n目前已選名單: ", end='')
                     j = 1
                     for ark in choose:
@@ -152,20 +155,21 @@ class tool():
                 if len(arks) == 0:
                     os.system('cls')
                     print(
-                        "\033[31mScrpit made by\033[0m \033[41;37mPaver\033[0m,github:\033[37;34mhttps://github.com/Zhen-Bo\033[0m")
+                        "\033[31mScrpit made by\033[0m \033[41;37mPaver\033[0m,github:\033[37;34mhttps://github.com/s17113230\033[0m")
                     print(
-                        "\033[31m此腳本作者為\033[0m \033[41;37mPaver\033[0m,github頁面:\033[37;34mhttps://github.com/Zhen-Bo\033[0m")
+                        "\033[31m此腳本作者為\033[0m \033[41;37mPaver\033[0m,github頁面:\033[37;34mhttps://github.com/s17113230\033[0m")
                     print("\n目前已選名單: ", end='')
                     j = 1
                     for ark in choose:
                         print("{0}.{1}    ".format(
                             j, ark.split('.')[0]), end='')
                         j += 1
-                    ctr = input("\n確定選擇請按enter,重新選擇請輸入'n': ")
-                    if str(ctr).lower() == 'n':
-                        return self.get_ark(path)
-                    else:
-                        return choose
+                    return choose
+                    # ctr = input("\n確定選擇請按enter,重新選擇請輸入'n': ")
+                    # if str(ctr).lower() == 'n':
+                    #     return self.get_ark(path)
+                    # else:
+                    #     return choose
 
     def load_template(self, img_path, template_list):
         imgs = []
@@ -174,7 +178,7 @@ class tool():
             imgs.append(self.cv_read(img))
         return imgs
 
-    def compare(self, img_list, gach=False, acc=0.85):
+    def compare(self, img_list, gach=False, acc=0.7):
         imgs = []
         self.screenshot = self.adbkit.screenshots()
         for item in img_list:

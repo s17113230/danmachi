@@ -1,2 +1,2 @@
-python Cloudia.py
+python danmachi.py
 pause
