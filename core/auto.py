@@ -28,9 +28,9 @@ class auto():
 
     def bot_start(self):
         os.system('cls')
-        print("\033[31mScrpit made by\033[0m \033[41;37mPaver\033[0m,github:\033[37;34mhttps://github.com/Zhen-Bo\033[0m")
+        print("\033[31mScrpit made by\033[0m \033[41;37mLeeChing\033[0m,github:\033[37;34mhttps://github.com/s17113230\033[0m")
         print(
-            "\033[31m此腳本作者為\033[0m \033[41;37mPaver\033[0m,github頁面:\033[37;34mhttps://github.com/Zhen-Bo\033[0m")
+            "\033[31m此腳本作者為\033[0m \033[41;37mLeeChing\033[0m,github頁面:\033[37;34mhttps://github.com/s17113230\033[0m")
         self.log_info(self.line)
         self.start = datetime.now()
         self.log_info("開始運行,開始時間: {}\n".format(
