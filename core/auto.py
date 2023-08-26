@@ -44,18 +44,21 @@ class auto():
         self.log_info("\n{}".format(self.line))
         POG = []
         again = False
+        # Note: 如果換遊戲的話，要記得換Again的圖片
         again = self.adbtool.compare(
             ["{0}\\again.jpg".format(self.path)])
         try:
             self.adbtool.tap(again, raw=True)
         except:
-            raise Exception("沒有偵測到\"再抽一次\",或是解析度不是9x16的解析度\n退出程式")
+            raise Exception("沒有偵測到\"再抽一次\",或是解析度不是16x9的解析度\n退出程式")
         
+        # Note: 這裡是因為按下重來後，還有一個確認的按鈕，所以要再按一次
         time.sleep(1)
         againCheck = self.adbtool.compare(
             ["{0}\\againCheck.jpg".format(self.path)])
         self.adbtool.tap(againCheck, raw=True)
 
+        # Note: 這裡是加速Skip動畫的按鈕
         time.sleep(2)
         againSkip = self.adbtool.compare(
             ["{0}\\skip.jpg".format(self.path)])
@@ -66,6 +69,7 @@ class auto():
             t_start = time.time()
             POG = []
             again = False
+            #Note: 當沒有再抽一次的時候，就會每1.5秒持續點擊畫面的(30, 30)座標
             while not again:
                 again = self.adbtool.compare(
                     ["{0}\\again.jpg".format(self.path)], gach=True)
@@ -90,6 +94,16 @@ class auto():
                     self.log_info('命中數量: 0\n')
                 self.log_info("耗時 {0} 秒\n".format(cost_time))
                 self.log_info(self.line)
+
+                #Note: 當{偵測的UR數量}與所設定的條件相同時，則會停止動作
+                if len(POG) >= 5:
+                    self.end = datetime.now()
+                    print(
+                        "執行結束,總共執行 {0} 次, 結束時間 {1} ,共花費 {2} ".format(self.times, self.end, str(self.end-self.start)))
+                    input("請輸入enter繼續")
+                    break
+
+                #Note: 當{偵測的UR}與{所選的UR}不同時，會重新點擊再抽一次
                 if len(POG) != len(self.adbtool.ark):
                     self.adbtool.tap(again[0], raw=True)
                     time.sleep(1)
@@ -103,10 +117,3 @@ class auto():
                     self.adbtool.tap(againSkip, raw=True)
 
                     self.times += 1
-                # elif len(POG) == len(self.adbtool.ark):
-                elif len(POG) >= 5:
-                    self.end = datetime.now()
-                    print(
-                        "執行結束,總共執行 {0} 次, 結束時間 {1} ,共花費 {2} ".format(self.times, self.end, str(self.end-self.start)))
-                    input("請輸入enter繼續")
-                    break

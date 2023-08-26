@@ -7,6 +7,7 @@ __author__ = "LeeChing"
 # 原始解析度 1920x1080
 # ============================================================================
 
+os.system('cls')
 print(
     "\033[31mScrpit made by\033[0m \033[41;37mLeeChing\033[0m,github:\033[37;34mhttps://github.com/s17113230\033[0m")
 print(

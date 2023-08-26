@@ -54,6 +54,8 @@ class adbKit():
             image = self.reimage(image)
         return image
 
+    #Note: 當遊戲為9*16的時候，就要將圖片轉換為540*960
+    #Note: 當遊戲為16*9的時候，就要將圖片轉換為960*540
     def reimage(self, images):
         images = cv2.resize(images, (960, 540))
         return images
@@ -88,6 +90,8 @@ class tool():
         self.ark = self.get_ark(img_path)
         self.template = self.load_template(img_path, self.ark)
 
+    #Note: 當遊戲為960*540的16*9的時候，將遊戲畫面的寬度除以540，得到的數字就是縮放倍率
+    #Note: 當遊戲為540*960的9*16的時候，將遊戲畫面的寬度除以960，得到的數字就是縮放倍率
     def get_width_muti(self):
         sample = self.adbkit.screenshots(raw=True)
         return sample.shape[0] / 540
@@ -96,6 +100,8 @@ class tool():
         arks = []
         for img in os.listdir(path):
             arks.append(img)
+
+        #Note: 將images裡面基本的圖片從Array裡面刪除，不進入後選區
         arks.remove("again.jpg")
         arks.remove("againCheck.jpg")
         arks.remove("skip.jpg")
@@ -117,6 +123,8 @@ class tool():
                 print("{0}.{1}    ".format(j, ark.split('.')[0]), end='')
                 j += 1
             print("\n輸入a為全部添加,輸入e離開")
+
+            #Note: 這裡可以進行添加，而我是直接選擇全部添加，所以直接輸入a
             # index = input("請輸入要鎖定的UR編號: ")
             index = 'a'
             try:
@@ -164,6 +172,8 @@ class tool():
                         print("{0}.{1}    ".format(
                             j, ark.split('.')[0]), end='')
                         j += 1
+                    
+                    #Note: 這裡原先有2次確認，我將其移除，直接確認選擇
                     return choose
                     # ctr = input("\n確定選擇請按enter,重新選擇請輸入'n': ")
                     # if str(ctr).lower() == 'n':
